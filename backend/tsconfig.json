@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "moduleResolution": "node", 
-    "module": "commonjs",                                /* Specify what module code is generated. */
-    "outDir": "dist",                                    /* Specify an output folder for all emitted files. */
-    "removeComments": true,                              /* Disable emitting comments. */
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-    "strict": true,                                      /* Enable all strict type-checking options. */
+    "moduleResolution": "node",
+    "module": "commonjs" /* Specify what module code is generated. */,
+    "outDir": "dist" /* Specify an output folder for all emitted files. */,
+    "removeComments": true /* Disable emitting comments. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
@@ -19,8 +19,8 @@
       {
         "transform": "typescript-transform-paths"
       }
-    ],
+    ]
   },
   "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "__tests__", "coverage"],
+  "exclude": ["node_modules", "dist", "__tests__", "coverage"]
 }

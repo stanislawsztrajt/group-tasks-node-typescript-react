@@ -1,0 +1,32 @@
+task {
+    "title": "Repair bug with loading css file on landing page",
+    "description": "previecw link: testing-page-page.com, file: src/page/landing-pages/main-landing, error is probably in useEffect",
+    "createdAt": "20022-07-30",
+    "authorId": "62e271a0fed3832bb241d19b",
+    "groupId": "",
+    "piority": "small",
+    "solversIds": [],
+    "type": "bug",
+    "status": "unfulfilled"
+}
+user 62e57605c20101aa35f9eaf9
+
+jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyZTU3NjA1YzIwMTAxYWEzNWY5ZWFmOSIsIm5hbWUiOiJ0ZXN0VXNlciIsImVtYWlsIjoidGVzdFVzZXJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkN3RXeWJLUHVmdWdsaGExREUwRGlUdWJrcnlhZlVFUm9VWnp5Nnp0WlBPT1R2MEF1QW9MWTYiLCJfX3YiOjB9LCJpYXQiOjE2NTkyMDU5NDcsImV4cCI6MTY1OTgxMDc0N30.PjJYdosEqvTRWmfYpxMFizkRvTb63C8JNG7H8NEgA3I
+
+user {
+    "name": "testUser",
+    "email": "testUser@gmail.com",
+    "password": "testUser"
+}
+
+group {
+        "_id": "62e57b3c417d7b6b55f21f49",
+        "adminId": "62e57605c20101aa35f9eaf9",
+        "usersIds": [
+            "62e57647c20101aa35f9eafb",
+            "62e5764cc20101aa35f9eafd"
+        ],
+        "name": "Cryptocurrency marketplace project",
+        "description": "Cryptocurrency marketplace - Web application for exchanging, selling and buying cryptocurrencies developed in angular and node.js express",
+        "__v": 0
+    }

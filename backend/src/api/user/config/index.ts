@@ -7,12 +7,12 @@ import { signIn } from "../controllers/auth";
 
 const router = express.Router();
 
-router.get("/users", get);
+router.get("/users", getAll);
 router.post("/users", hashPassword, create);
-router.get("/users/:id", getAll);
+router.get("/users/:id", get);
 router.put("/users/:id", verifyToken, verifyUser, hashPassword, update);
 router.delete("/users/:id", verifyToken, verifyUser, remove);
 
 router.post("/auth/sign-in", signIn);
 
-export default router
+export default router;

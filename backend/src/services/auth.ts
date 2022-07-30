@@ -2,10 +2,11 @@ import { Response, NextFunction } from "express";
 
 import { Itask } from "@api/task/models";
 import { Iuser } from "@api/user/models";
+import { Igroup } from "@api/group/models";
 import { TypedRequest } from "@utils/types";
 
 export const verifyToken = (
-  req: TypedRequest<Iuser | Itask>,
+  req: TypedRequest<Iuser | Itask | Igroup>,
   res: Response,
   next: NextFunction
 ) => {

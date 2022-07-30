@@ -1,23 +1,23 @@
 import { Schema, model } from "mongoose";
 
 export interface Itask {
-  _id: string
+  _id: string;
   title: string;
   description: string;
   createdAt: Date;
   authorId: string;
   groupId?: string;
   solversIds?: string[];
-  piority: 'small' | 'normal' | 'high';
-  type: 'bug' | 'update' | 'creation';
-  status: 'pending' | 'fulfilled' | 'unfulfilled'
+  piority: "small" | "normal" | "high";
+  type: "bug" | "update" | "creation";
+  status: "pending" | "fulfilled" | "unfulfilled";
 }
 
 const taskSchema = new Schema<Itask>({
   title: {
     type: String,
     minLength: 4,
-    maxLength: 100,
+    maxLength: 150,
     required: true,
   },
   description: {

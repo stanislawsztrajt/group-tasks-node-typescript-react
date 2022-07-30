@@ -18,6 +18,8 @@ export const signIn = async (req: TypedRequest<Iuser>, res: Response) => {
       .json({ message: "email or/and password is/are incorrect" });
   }
 
-  const token = jwt.sign({ user }, process.env.JWT_SECRET as string, { expiresIn: "7d" });
+  const token = jwt.sign({ user }, process.env.JWT_SECRET as string, {
+    expiresIn: "7d",
+  });
   res.status(200).json({ jwt: token, user });
 };

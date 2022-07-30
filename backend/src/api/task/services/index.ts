@@ -1,28 +1,37 @@
 import { Response, NextFunction } from "express";
-import jwt from 'jsonwebtoken';
 
+import Group, { Igroup } from "@api/group/models";
 import Task, { Itask } from "@api/task/models";
-import { Iuser } from "@api/user/models";
 import { TypedRequest } from "@utils/types";
-
-interface JwtPayload {
-  user: Iuser
-};
+import { getUserFromJwt, sendDefaultError } from "@utils/helpers";
 
 export const verifyOwner = async (
   req: TypedRequest<Itask>,
   res: Response,
   next: NextFunction
 ) => {
-  const { id } = req.params;
   try {
-    if(typeof req.token === 'undefined') return res.sendStatus(401)
-    const { authorId, solversIds } = await Task.findById(id) as Itask;
-    const { user } = jwt.verify(req.token, process.env.JWT_SECRET as string) as JwtPayload
-    if (user._id !== authorId || solversIds?.includes(user._id)) return res.sendStatus(401);
+    const { id } = req.params;
+    const {
+      authorId,
+      solversIds,
+      groupId
+    } = (await Task.findById( id )) as Itask;
+    const { adminId, usersIds } = (await Group.findOne({ _id: groupId })) as Igroup;
+    const { user } = getUserFromJwt(req.token as string);
+
+    if(authorId === user._id) return next()
+    if(adminId === user._id) return next()
+
+    if (
+      !solversIds?.includes(user._id) &&
+      !usersIds?.includes(user._id)
+    )
+      return res.sendStatus(401);
+
 
     next();
-  } catch {
-    res.sendStatus(401);
+  } catch(err) {
+    sendDefaultError(err, res);
   }
 };

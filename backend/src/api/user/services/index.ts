@@ -1,10 +1,10 @@
 import { Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 import { Iuser } from "../models";
 import { TypedRequest } from "@utils/types";
-import { saltRounds } from '@utils/constants'
+import { saltRounds } from "@utils/constants";
+import { getUserFromJwt, sendDefaultError } from "@utils/helpers";
 
 export const hashPassword = (
   req: TypedRequest<Iuser>,
@@ -16,23 +16,18 @@ export const hashPassword = (
   next();
 };
 
-interface JwtPayload {
-  user: Iuser
-};
-
 export const verifyUser = (
   req: TypedRequest<Iuser>,
   res: Response,
   next: NextFunction
 ) => {
-  const { id } = req.params;
   try {
-    if(typeof req.token === 'undefined') return res.sendStatus(401)
-    const { user } = jwt.verify(req.token, process.env.JWT_SECRET as string) as JwtPayload
+    const { id } = req.params;
+    const { user } = getUserFromJwt(req.token as string);
     if (user._id !== id) return res.sendStatus(401);
 
     next();
-  } catch {
-    res.sendStatus(401);
+  } catch(err) {
+    sendDefaultError(err, res);
   }
 };
