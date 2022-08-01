@@ -17,15 +17,14 @@ export const verifyOwner = async (
       solversIds,
       groupId
     } = (await Task.findById( id )) as Itask;
-    const { adminId, usersIds } = (await Group.findOne({ _id: groupId })) as Igroup;
+    const { adminId } = (await Group.findOne({ _id: groupId })) as Igroup;
     const { user } = getUserFromJwt(req.token as string);
 
     if(authorId === user._id) return next()
     if(adminId === user._id) return next()
 
     if (
-      !solversIds?.includes(user._id) &&
-      !usersIds?.includes(user._id)
+      !solversIds?.includes(user._id)
     )
       return res.sendStatus(401);
 

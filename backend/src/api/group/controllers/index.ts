@@ -11,9 +11,21 @@ export const getUserGroups = async (
 ) => {
   try {
     const { user } = getUserFromJwt(req.token as string);
-    const entities = (await Entity.find({
-      $or: [{ usersIds: user._id }, { adminId: user._id }],
-    })) as Igroup[];
+    const entities = (await Entity.find({ usersIds: user._id} )) as Igroup[];
+
+    res.status(200).json(entities);
+  } catch (err) {
+    sendDefaultError(err, res);
+  }
+};
+
+export const getAdminGroups = async (
+  req: TypedRequest<Igroup>,
+  res: Response
+) => {
+  try {
+    const { user } = getUserFromJwt(req.token as string);
+    const entities = (await Entity.find({ adminId: { $eq: user._id }})) as Igroup[];
 
     res.status(200).json(entities);
   } catch (err) {
@@ -30,7 +42,7 @@ export const getGroupUsers = async (
     const { adminId, usersIds } = (await Entity.findById(_id)) as Igroup;
 
     const userAdmin = await User.findById(adminId) as Iuser
-    const users = await User.find({ _id: usersIds }) as Iuser[]
+    const users = await User.find({ _id: { $in: usersIds } }) as Iuser[]
 
     users.unshift(userAdmin)
     

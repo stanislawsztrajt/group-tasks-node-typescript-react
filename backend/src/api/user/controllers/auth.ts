@@ -21,5 +21,9 @@ export const signIn = async (req: TypedRequest<Iuser>, res: Response) => {
   const token = jwt.sign({ user }, process.env.JWT_SECRET as string, {
     expiresIn: "7d",
   });
-  res.status(200).json({ jwt: token, user });
+
+  const userWithoutPassword = JSON.parse(JSON.stringify(user))
+  delete userWithoutPassword.password
+
+  res.status(200).json({ jwt: token, user: userWithoutPassword });
 };

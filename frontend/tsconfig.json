@@ -18,7 +18,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@features/*": ["features/*"],
+      "@ui/*": ["features/ui/*"],
+      "@user/*": ["features/user/*"],
+      "@task/*": ["features/task/*"],
+      "@group/*": ["features/group/*"]
+    }
   },
   "include": [
     "src"

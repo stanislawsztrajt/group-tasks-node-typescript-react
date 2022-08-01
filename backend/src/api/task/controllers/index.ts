@@ -1,9 +1,37 @@
 import { Response, Request } from "express";
-import Entity from "../models";
-import { Itask } from "../models";
+import Entity, { Itask } from "../models";
 import { TypedRequest } from "@utils/types";
-import { sendDefaultError } from "@utils/helpers";
+import { getUserFromJwt, sendDefaultError } from "@utils/helpers";
 import User, { Iuser } from "@api/user/models";
+
+
+export const getAuthorTasks = async (
+  req: TypedRequest<Itask>,
+  res: Response
+) => {
+  try {
+    const { user } = getUserFromJwt(req.token as string);
+    const entities = (await Entity.find({ authorId: user._id })) as Itask[];
+
+    res.status(200).json(entities);
+  } catch (err) {
+    sendDefaultError(err, res);
+  }
+};
+
+export const getUserTasks = async (
+  req: TypedRequest<Itask>,
+  res: Response
+) => {
+  try {
+    const { user } = getUserFromJwt(req.token as string);
+    const entities = (await Entity.find({ solversIds: user._id })) as Itask[];
+
+    res.status(200).json(entities);
+  } catch (err) {
+    sendDefaultError(err, res);
+  }
+};
 
 export const getTaskUsers = async (req: Request, res: Response) => {
   try {
@@ -11,7 +39,7 @@ export const getTaskUsers = async (req: Request, res: Response) => {
     const { authorId, solversIds } = (await Entity.findById(id)) as Itask;
     
     const taskAuthor = await User.findById(authorId) as Iuser
-    const solvers = await User.find({ _id: solversIds }) as Iuser[]
+    const solvers = await User.find({ _id: { $in: solversIds } }) as Iuser[]
     
     solvers.unshift(taskAuthor);
 
@@ -20,6 +48,7 @@ export const getTaskUsers = async (req: Request, res: Response) => {
     sendDefaultError(err, res);
   }
 };
+
 
 export const getAll = async (req: Request, res: Response) => {
   try {
