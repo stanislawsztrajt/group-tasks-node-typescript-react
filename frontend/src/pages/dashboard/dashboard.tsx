@@ -1,70 +1,67 @@
 import React, { FC, useEffect, useState } from 'react';
 import { user, authorization } from 'constants/index'
 import axios from 'axios';
-import { Igroup } from 'types/interfaces';
+import { Igroup, IgroupResponse, Itask, ItaskResponse } from 'types/interfaces';
+import GroupList from '@features/group/group-list';
+import TaskList from '@features/task/task-list';
 
 const Dashboard: FC = () => {
   const [userGroups, setUserGroups] = useState<Igroup[]>([])
+  const [adminGroups, setAdminGroups] = useState<Igroup[]>([])
+  const [userTasks, setUserTasks] = useState<Itask[]>([])
+  const [authorTasks, setAuthorTasks] = useState<Itask[]>([])
 
   useEffect(() =>{
     const fetchUserGroups = async () => {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/groups/user-groups`, authorization)
-      console.log("🚀 ~ file: dashboard.tsx ~ line 12 ~ fetchUserGroups ~ data", data)
+      const { data }: IgroupResponse = await axios.get(`${process.env.REACT_APP_API_URL}/groups/user-groups`, authorization)
       setUserGroups(data)
     }
     fetchUserGroups()
 
     const fetchAdminGroups = async () => {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/groups/admin-groups`, authorization)
-      console.log("🚀 ~ file: dashboard.tsx ~ line 18 ~ fetchAdminGroups ~ data", data)
-      setUserGroups(data)
+      const { data }: IgroupResponse = await axios.get(`${process.env.REACT_APP_API_URL}/groups/admin-groups`, authorization)
+      setAdminGroups(data)
     }
     fetchAdminGroups()
 
     const fetchUserTasks = async () => {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/user-tasks`, authorization)
-      console.log("🚀 ~ file: dashboard.tsx ~ line 25 ~ fetchUserTasks ~ data", data)
-      setUserGroups(data)
+      const { data }: ItaskResponse = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/user-tasks`, authorization)
+      setUserTasks(data)
     }
     fetchUserTasks()
 
     const fetchAuthorTasks = async () => {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/author-tasks`, authorization)
-      console.log("🚀 ~ file: dashboard.tsx ~ line 32 ~ fetchAuthorTasks ~ data", data)
-      setUserGroups(data)
+      const { data }: ItaskResponse = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/author-tasks`, authorization)
+      setAuthorTasks(data)
     }
     fetchAuthorTasks()
   }, [])
 
-  const userGroupsList = userGroups.map(({ _id, name, description }) => {
-    return (
-      <div key={_id}>
-        <div>
-          {name}
-        </div>
-        <div>
-          {description}
-        </div>
-      </div>
-    )
-  })
-
   return (
-    <div>
-      Hi { user.name }!
-      <div>
-        Groups where you are admin:
+    <div className='group-task-top-box'>
+      <div className='group-task-middle-box'>
+        <div className='group-task-down-box'>
+          <div className='group-task-item'>
+            Groups where you are admin:
+            <GroupList groups={adminGroups}/>
+          </div>
+          <div>
+            Groups where you are user:
+            <GroupList groups={userGroups}/>
+          </div>
+        </div>
       </div>
-      <div>
-        Groups where you are user:
-        {userGroupsList}
-      </div>
-      <div>
-        Tasks where you are author
-      </div>
-      <div>
-        Tasks where you are solver:
-      </div>
+      
+      {/* <div className='flex flex-col'>
+        <div>
+          Tasks where you are author
+          <TaskList tasks={authorTasks}/>
+        </div>
+        <div>
+          Tasks where you are solver:
+          <TaskList tasks={userTasks}/>
+        </div>
+      </div> */}
     </div>
   )
 }

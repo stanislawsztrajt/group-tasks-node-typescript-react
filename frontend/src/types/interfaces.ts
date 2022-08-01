@@ -1,8 +1,8 @@
 export interface Iuser {
-  _id: string
-  name: string
-  email: string
-  password: string
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
 }
 
 export interface IsignUpValues {
@@ -36,10 +36,19 @@ export interface Itask {
   status: "pending" | "fulfilled" | "unfulfilled";
 }
 
+export interface ItaskResponse {
+  data: Itask[];
+}
+
 export interface Igroup {
   _id: string;
   adminId: string;
   usersIds?: string[];
   name: string;
   description: string;
+  createdAt: Date;
+}
+
+export interface IgroupResponse {
+  data: Igroup[];
 }

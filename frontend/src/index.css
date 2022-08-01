@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer {
+  body {
+    @apply bg-color-bg
+  }
+  
+  .group-task-top-box {
+    @apply flex flex-row
+  }
+  
+  .group-task-middle-box {
+    @apply p-8
+  }
+  
+  .group-task-down-box {
+    @apply flex flex-col p-8 bg-secondary bg-primary text-color-bg
+  }
+  
+  .group-task-item {
+    @apply p-2
+  }
+}

@@ -77,7 +77,7 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const create = async (req: TypedRequest<Igroup>, res: Response) => {
   try {
-    const entity = new Entity(req.body);
+    const entity = new Entity({...req.body, createdAt: new Date()});
     const newEntity = await entity.save();
     res.status(200).json(newEntity);
   } catch (err) {

@@ -2,13 +2,13 @@ import * as Yup from "yup";
 import { IloginValues, Iuser } from "types/interfaces";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
-interface IloginResponse { 
-  data: { 
-    jwt: string, 
-    user: Iuser 
-  } 
+interface IloginResponse {
+  data: {
+    jwt: string;
+    user: Iuser;
+  };
 }
 
 const loginSchema = Yup.object().shape({
@@ -17,7 +17,7 @@ const loginSchema = Yup.object().shape({
     .min(6, "Password must be longer than 6 chars")
     .max(30, "Password must be shorter than 30 chars")
     .required("Required"),
-  
+
   password: Yup.string()
     .min(6, "Password must be longer than 6 chars")
     .max(30, "Password must be shorter than 30 chars")
@@ -36,9 +36,12 @@ const useLogin = () => {
   const [error, setError] = useState<string | undefined>();
 
   const login = async (user: IloginValues) => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const { data }: IloginResponse = await axios.post(`${process.env.REACT_APP_API_URL}/auth/sign-in`, user)
+      const { data }: IloginResponse = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/sign-in`,
+        user
+      );
 
       localStorage.setItem("jwt", JSON.stringify(data.jwt));
       localStorage.setItem("user", JSON.stringify(data.user));
@@ -48,7 +51,7 @@ const useLogin = () => {
     } catch {
       setError("Invalid email or password");
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   return {
@@ -56,7 +59,7 @@ const useLogin = () => {
     loginSchema,
     login,
     error,
-    loading
+    loading,
   };
 };
 export default useLogin;

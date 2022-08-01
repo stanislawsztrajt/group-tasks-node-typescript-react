@@ -6,7 +6,6 @@ import { Loading } from "features/ui";
 import { Link } from "react-router-dom";
 
 const Login: FC = () => {
-
   const { initialValues, loginSchema, login, error, loading } = useLogin();
 
   return (
@@ -15,7 +14,9 @@ const Login: FC = () => {
         <div className="text-center">
           {/* <img className="mx-auto w-36" src={UndrawNature} alt="logo" /> */}
 
-          <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold">Chill and think</h4>
+          <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold">
+            Chill and think
+          </h4>
         </div>
       </Link>
       {loading ? (
@@ -23,11 +24,17 @@ const Login: FC = () => {
           <Loading />
         </div>
       ) : (
-        <Formik initialValues={initialValues} validationSchema={loginSchema} onSubmit={login}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={loginSchema}
+          onSubmit={login}
+        >
           <Form>
             <p className="mb-4">Please login to your account</p>
             <div className="mb-4">
-              {error && <div className="text-sm font-thin text-red-500">{error}</div>}
+              {error && (
+                <div className="text-sm font-thin text-red-500">{error}</div>
+              )}
               <Field
                 type="email"
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"

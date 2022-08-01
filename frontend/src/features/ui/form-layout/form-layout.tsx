@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react'
-import type { FCC } from "types/index"
+import React, { ReactNode } from "react";
+import type { FCC } from "types/index";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
-const FormLayou: FCC<Props> = ({children}: Props) => {
+const FormLayou: FCC<Props> = ({ children }: Props) => {
   return (
     <main className="flex flex-col items-center justify-center">
       <div className="h-full gradient-form md:h-screen">
@@ -21,7 +21,9 @@ const FormLayou: FCC<Props> = ({children}: Props) => {
                     <div className="px-4 py-6 text-white md:p-12 md:mx-6">
                       {/* <img src={UndrawBrainstorming} className="" alt="" /> */}
                       <div className="mt-4">
-                        <h4 className="mb-6 text-xl font-semibold px-28">Group tasks! login</h4>
+                        <h4 className="mb-6 text-xl font-semibold px-28">
+                          Group tasks! login
+                        </h4>
                       </div>
                     </div>
                   </div>
@@ -32,7 +34,7 @@ const FormLayou: FCC<Props> = ({children}: Props) => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
 export default FormLayou;

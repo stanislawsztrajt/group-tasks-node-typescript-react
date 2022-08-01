@@ -3,6 +3,7 @@ import { Schema, model } from "mongoose";
 export interface Igroup {
   _id: string;
   adminId: string;
+  createdAt: Date
   usersIds?: string[];
   name: string;
   description: string;
@@ -30,6 +31,11 @@ const taskSchema = new Schema<Igroup>({
     minLength: 4,
     maxLength: 1000,
     required: true,
+  },
+  createdAt: {
+    type: Date,
+    minLength: 4,
+    maxLength: 1000,
   },
 });
 

@@ -30,7 +30,6 @@ const taskSchema = new Schema<Itask>({
     type: Date,
     minLength: 4,
     maxLength: 100,
-    required: true,
   },
   type: {
     type: String,
