@@ -4,7 +4,6 @@ import { TypedRequest } from "@utils/types";
 import { getUserFromJwt, sendDefaultError } from "@utils/helpers";
 import User, { Iuser } from "@api/user/models";
 
-
 export const getAuthorTasks = async (
   req: TypedRequest<Itask>,
   res: Response
@@ -19,10 +18,7 @@ export const getAuthorTasks = async (
   }
 };
 
-export const getUserTasks = async (
-  req: TypedRequest<Itask>,
-  res: Response
-) => {
+export const getUserTasks = async (req: TypedRequest<Itask>, res: Response) => {
   try {
     const { user } = getUserFromJwt(req.token as string);
     const entities = (await Entity.find({ solversIds: user._id })) as Itask[];
@@ -37,10 +33,10 @@ export const getTaskUsers = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const { authorId, solversIds } = (await Entity.findById(id)) as Itask;
-    
-    const taskAuthor = await User.findById(authorId) as Iuser
-    const solvers = await User.find({ _id: { $in: solversIds } }) as Iuser[]
-    
+
+    const taskAuthor = (await User.findById(authorId)) as Iuser;
+    const solvers = (await User.find({ _id: { $in: solversIds } })) as Iuser[];
+
     solvers.unshift(taskAuthor);
 
     res.status(200).json(solvers);
@@ -48,7 +44,6 @@ export const getTaskUsers = async (req: Request, res: Response) => {
     sendDefaultError(err, res);
   }
 };
-
 
 export const getAll = async (req: Request, res: Response) => {
   try {
@@ -61,7 +56,7 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const create = async (req: TypedRequest<Itask>, res: Response) => {
   try {
-    const entity = new Entity({...req.body, createdAt: new Date()});
+    const entity = new Entity({ ...req.body, createdAt: new Date() });
     const newEntity = await entity.save();
     res.status(200).json(newEntity);
   } catch (err) {

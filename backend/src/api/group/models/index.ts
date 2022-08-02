@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 export interface Igroup {
   _id: string;
   adminId: string;
-  createdAt: Date
+  createdAt: Date;
   usersIds?: string[];
   name: string;
   description: string;

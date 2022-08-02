@@ -31,11 +31,10 @@ export const verifyUsers = async (
     const { adminId, usersIds } = (await Group.findById(id)) as Igroup;
     const { user } = getUserFromJwt(req.token as string);
 
-    if (adminId === user._id) return next()
-    if (!usersIds?.includes(user._id))
-      return res.sendStatus(401);
+    if (adminId === user._id) return next();
+    if (!usersIds?.includes(user._id)) return res.sendStatus(401);
     next();
-  } catch(err) {
+  } catch (err) {
     sendDefaultError(err, res);
   }
 };

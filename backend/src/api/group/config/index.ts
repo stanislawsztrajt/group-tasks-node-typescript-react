@@ -1,6 +1,15 @@
 import express from "express";
 
-import { get, getUserGroups, getGroupUsers, getGroupTasks, create, update, remove, getAdminGroups,  } from "../controllers";
+import {
+  get,
+  getUserGroups,
+  getGroupUsers,
+  getGroupTasks,
+  create,
+  update,
+  remove,
+  getAdminGroups,
+} from "../controllers";
 import { verifyAdmin, verifyUsers } from "../services";
 
 const router = express.Router();

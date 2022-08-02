@@ -11,7 +11,7 @@ export const getUserGroups = async (
 ) => {
   try {
     const { user } = getUserFromJwt(req.token as string);
-    const entities = (await Entity.find({ usersIds: user._id} )) as Igroup[];
+    const entities = (await Entity.find({ usersIds: user._id })) as Igroup[];
 
     res.status(200).json(entities);
   } catch (err) {
@@ -25,7 +25,9 @@ export const getAdminGroups = async (
 ) => {
   try {
     const { user } = getUserFromJwt(req.token as string);
-    const entities = (await Entity.find({ adminId: { $eq: user._id }})) as Igroup[];
+    const entities = (await Entity.find({
+      adminId: { $eq: user._id },
+    })) as Igroup[];
 
     res.status(200).json(entities);
   } catch (err) {
@@ -33,33 +35,27 @@ export const getAdminGroups = async (
   }
 };
 
-export const getGroupUsers = async (
-  req: Request,
-  res: Response
-) => {
+export const getGroupUsers = async (req: Request, res: Response) => {
   try {
     const _id = req.params.id;
     const { adminId, usersIds } = (await Entity.findById(_id)) as Igroup;
 
-    const userAdmin = await User.findById(adminId) as Iuser
-    const users = await User.find({ _id: { $in: usersIds } }) as Iuser[]
+    const userAdmin = (await User.findById(adminId)) as Iuser;
+    const users = (await User.find({ _id: { $in: usersIds } })) as Iuser[];
 
-    users.unshift(userAdmin)
-    
+    users.unshift(userAdmin);
+
     res.status(200).json(users);
   } catch (err) {
     sendDefaultError(err, res);
   }
 };
 
-export const getGroupTasks = async (
-  req: Request,
-  res: Response
-) => {
+export const getGroupTasks = async (req: Request, res: Response) => {
   try {
     const _id = req.params.id;
     const tasks = (await Task.find({ groupId: _id })) as Itask[];
-    
+
     res.status(200).json(tasks);
   } catch (err) {
     sendDefaultError(err, res);
@@ -77,7 +73,7 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const create = async (req: TypedRequest<Igroup>, res: Response) => {
   try {
-    const entity = new Entity({...req.body, createdAt: new Date()});
+    const entity = new Entity({ ...req.body, createdAt: new Date() });
     const newEntity = await entity.save();
     res.status(200).json(newEntity);
   } catch (err) {

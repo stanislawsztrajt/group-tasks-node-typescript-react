@@ -27,7 +27,7 @@ export interface Itask {
   _id: string;
   title: string;
   description: string;
-  createdAt: Date;
+  createdAt: Date | string;
   authorId: string;
   groupId?: string;
   solversIds?: string[];

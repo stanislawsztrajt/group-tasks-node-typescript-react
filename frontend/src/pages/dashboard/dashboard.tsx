@@ -5,37 +5,51 @@ import { Igroup, IgroupResponse, Itask, ItaskResponse } from 'types/interfaces';
 import GroupList from '@features/group/group-list';
 import TaskList from '@features/task/task-list';
 import './dashboard.css'
-const Dashboard: FC = () => {
-  const [userGroups, setUserGroups] = useState<Igroup[]>([])
-  const [adminGroups, setAdminGroups] = useState<Igroup[]>([])
-  const [userTasks, setUserTasks] = useState<Itask[]>([])
-  const [authorTasks, setAuthorTasks] = useState<Itask[]>([])
 
-  useEffect(() =>{
+
+const Dashboard: FC = () => {
+  const [userGroups, setUserGroups] = useState<Igroup[]>([]);
+  const [adminGroups, setAdminGroups] = useState<Igroup[]>([]);
+  const [userTasks, setUserTasks] = useState<Itask[]>([]);
+  const [authorTasks, setAuthorTasks] = useState<Itask[]>([]);
+
+  useEffect(() => {
     const fetchUserGroups = async () => {
-      const { data }: IgroupResponse = await axios.get(`${process.env.REACT_APP_API_URL}/groups/user-groups`, authorization)
-      setUserGroups(data)
-    }
-    fetchUserGroups()
+      const { data }: IgroupResponse = await axios.get(
+        `${process.env.REACT_APP_API_URL}/groups/user-groups`,
+        authorization
+      );
+      setUserGroups(data);
+    };
+    fetchUserGroups();
 
     const fetchAdminGroups = async () => {
-      const { data }: IgroupResponse = await axios.get(`${process.env.REACT_APP_API_URL}/groups/admin-groups`, authorization)
-      setAdminGroups(data)
-    }
-    fetchAdminGroups()
+      const { data }: IgroupResponse = await axios.get(
+        `${process.env.REACT_APP_API_URL}/groups/admin-groups`,
+        authorization
+      );
+      setAdminGroups(data);
+    };
+    fetchAdminGroups();
 
     const fetchUserTasks = async () => {
-      const { data }: ItaskResponse = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/user-tasks`, authorization)
-      setUserTasks(data)
-    }
-    fetchUserTasks()
+      const { data }: ItaskResponse = await axios.get(
+        `${process.env.REACT_APP_API_URL}/tasks/user-tasks`,
+        authorization
+      );
+      setUserTasks(data);
+    };
+    fetchUserTasks();
 
     const fetchAuthorTasks = async () => {
-      const { data }: ItaskResponse = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/author-tasks`, authorization)
-      setAuthorTasks(data)
-    }
-    fetchAuthorTasks()
-  }, [])
+      const { data }: ItaskResponse = await axios.get(
+        `${process.env.REACT_APP_API_URL}/tasks/author-tasks`,
+        authorization
+      );
+      setAuthorTasks(data);
+    };
+    fetchAuthorTasks();
+  }, []);
 
   return (
     <div className='group-task-top-box'>
@@ -58,7 +72,7 @@ const Dashboard: FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Dashboard;

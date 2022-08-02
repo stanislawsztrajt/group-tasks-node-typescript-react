@@ -1,6 +1,14 @@
 import express from "express";
 
-import { get, getTaskUsers, create, update, remove, getUserTasks, getAuthorTasks } from "../controllers";
+import {
+  get,
+  getTaskUsers,
+  create,
+  update,
+  remove,
+  getUserTasks,
+  getAuthorTasks,
+} from "../controllers";
 import { verifyOwner } from "../services";
 
 const router = express.Router();

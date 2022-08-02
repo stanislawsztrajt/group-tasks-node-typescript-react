@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import cors from 'cors'
+import cors from "cors";
 
 // database
 import { connectToMongoDB } from "./config/database";
@@ -18,16 +18,21 @@ dotenv.config();
 connectToMongoDB();
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:3000']
-}));
-
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
 
 app.use(bodyParser.json());
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({ message: 'There is nothing here, go to the /users /tasks /groups' });
+  res
+    .status(200)
+    .json({
+      message: "There is nothing here, go to the /users /tasks /groups",
+    });
 });
 
 app.use("/", userRouter);

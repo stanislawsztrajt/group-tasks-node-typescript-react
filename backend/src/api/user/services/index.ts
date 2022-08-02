@@ -27,7 +27,7 @@ export const verifyUser = (
     if (user._id !== id) return res.sendStatus(401);
 
     next();
-  } catch(err) {
+  } catch (err) {
     sendDefaultError(err, res);
   }
 };

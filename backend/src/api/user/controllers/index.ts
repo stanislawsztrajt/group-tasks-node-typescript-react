@@ -7,9 +7,9 @@ import { sendDefaultError } from "@utils/helpers";
 export const getAll = async (req: Request, res: Response) => {
   try {
     const entities = (await Entity.find()) as Iuser[];
-    const users = entities.map(({_id, name, email}) => {
-      return { _id, name, email }
-    })
+    const users = entities.map(({ _id, name, email }) => {
+      return { _id, name, email };
+    });
     res.status(200).json(users);
   } catch (err) {
     sendDefaultError(err, res);
@@ -21,8 +21,8 @@ export const create = async (req: TypedRequest<Iuser>, res: Response) => {
     const entity = new Entity(req.body);
     const newEntity = await entity.save();
 
-    const userWithoutPassword = JSON.parse(JSON.stringify(newEntity))
-    delete userWithoutPassword.password
+    const userWithoutPassword = JSON.parse(JSON.stringify(newEntity));
+    delete userWithoutPassword.password;
     res.status(200).json(userWithoutPassword);
   } catch (err) {
     sendDefaultError(err, res);

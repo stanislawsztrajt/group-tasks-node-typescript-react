@@ -22,8 +22,8 @@ export const signIn = async (req: TypedRequest<Iuser>, res: Response) => {
     expiresIn: "7d",
   });
 
-  const userWithoutPassword = JSON.parse(JSON.stringify(user))
-  delete userWithoutPassword.password
+  const userWithoutPassword = JSON.parse(JSON.stringify(user));
+  delete userWithoutPassword.password;
 
   res.status(200).json({ jwt: token, user: userWithoutPassword });
 };

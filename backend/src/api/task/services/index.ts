@@ -12,25 +12,19 @@ export const verifyOwner = async (
 ) => {
   try {
     const { id } = req.params;
-    const {
-      authorId,
-      solversIds,
-      groupId
-    } = (await Task.findById( id )) as Itask;
+    const { authorId, solversIds, groupId } = (await Task.findById(
+      id
+    )) as Itask;
     const { adminId } = (await Group.findOne({ _id: groupId })) as Igroup;
     const { user } = getUserFromJwt(req.token as string);
 
-    if(authorId === user._id) return next()
-    if(adminId === user._id) return next()
+    if (authorId === user._id) return next();
+    if (adminId === user._id) return next();
 
-    if (
-      !solversIds?.includes(user._id)
-    )
-      return res.sendStatus(401);
-
+    if (!solversIds?.includes(user._id)) return res.sendStatus(401);
 
     next();
-  } catch(err) {
+  } catch (err) {
     sendDefaultError(err, res);
   }
 };
