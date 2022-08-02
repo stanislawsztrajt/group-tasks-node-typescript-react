@@ -9,9 +9,19 @@ interface Props {
 const TaskList: FC<Props> = ({ tasks }) => {
   return (
     <div>
-      {tasks.map((task) => (
-        <TaskItem key={task._id} task={task} />
-      ))}
+      { tasks.length < 1 ? 
+        <div className='text-lg text-center'>
+          You dont have any tasks
+        </div>
+      : 
+        <>
+          {
+            tasks.map((task) => (
+              <TaskItem key={task._id} task={task} />
+            ))
+          }
+        </>
+      }
     </div>
   );
 };

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Igroup, IgroupResponse, Itask, ItaskResponse } from 'types/interfaces';
 import GroupList from '@features/group/group-list';
 import TaskList from '@features/task/task-list';
-
+import './dashboard.css'
 const Dashboard: FC = () => {
   const [userGroups, setUserGroups] = useState<Igroup[]>([])
   const [adminGroups, setAdminGroups] = useState<Igroup[]>([])
@@ -40,28 +40,23 @@ const Dashboard: FC = () => {
   return (
     <div className='group-task-top-box'>
       <div className='group-task-middle-box'>
-        <div className='group-task-down-box'>
-          <div className='group-task-item'>
-            Groups where you are admin:
-            <GroupList groups={adminGroups}/>
-          </div>
-          <div>
-            Groups where you are user:
-            <GroupList groups={userGroups}/>
-          </div>
-        </div>
+        <GroupList groups={adminGroups} text="Groups where you are admin"/>
+        <GroupList groups={userGroups} text="Groups where you are user"/>
       </div>
-      
-      {/* <div className='flex flex-col'>
-        <div>
-          Tasks where you are author
+      <div className='group-task-middle-box'>
+        <div className=''>
+          <div className='mt-10 text-3xl font-medium text-center text-indigo-600 uppercase'> 
+            Tasks where you are author
+          </div>
           <TaskList tasks={authorTasks}/>
         </div>
         <div>
-          Tasks where you are solver:
+          <div className='mt-10 text-3xl font-medium text-center text-indigo-600 uppercase'> 
+            Tasks where you are solver
+          </div>
           <TaskList tasks={userTasks}/>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }

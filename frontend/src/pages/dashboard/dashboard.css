@@ -1,0 +1,11 @@
+.group-task-top-box {
+  @apply flex flex-row justify-center
+}
+
+.group-task-middle-box {
+  @apply px-20 flex flex-col w-1/2
+}
+
+.group-task-item {
+  @apply flex flex-col p-8 bg-white text-black rounded-md shadow-md
+}
