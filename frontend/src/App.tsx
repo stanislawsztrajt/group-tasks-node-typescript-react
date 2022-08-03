@@ -32,7 +32,6 @@ const App: FC = () => {
         ></Route>
       </Route>
 
-
       <Route path="dashboard" element={<Dashboard />}></Route>
       <Route path="groups">
         <Route path=":id" element={<Group />}></Route>

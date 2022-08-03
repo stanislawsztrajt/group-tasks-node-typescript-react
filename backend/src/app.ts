@@ -28,11 +28,9 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
-  res
-    .status(200)
-    .json({
-      message: "There is nothing here, go to the /users /tasks /groups",
-    });
+  res.status(200).json({
+    message: "There is nothing here, go to the /users /tasks /groups",
+  });
 });
 
 app.use("/", userRouter);

@@ -36,10 +36,6 @@ export interface Itask {
   status: "pending" | "fulfilled" | "unfulfilled";
 }
 
-export interface ItaskResponse {
-  data: Itask[];
-}
-
 export interface Igroup {
   _id: string;
   adminId: string;
@@ -49,6 +45,6 @@ export interface Igroup {
   createdAt: Date;
 }
 
-export interface IgroupResponse {
-  data: Igroup[];
+export interface Iresponse<T> {
+  data: T;
 }
