@@ -36,12 +36,15 @@ export interface Itask {
   status: "pending" | "fulfilled" | "unfulfilled";
 }
 
-export interface Igroup {
-  _id: string;
+export interface IgroupData {
   adminId: string;
   usersIds?: string[];
   name: string;
   description: string;
+}
+
+export interface Igroup extends IgroupData {
+  _id: string;
   createdAt: Date;
 }
 

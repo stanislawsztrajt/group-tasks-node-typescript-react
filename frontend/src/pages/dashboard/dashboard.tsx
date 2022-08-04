@@ -3,12 +3,14 @@ import GroupList from "@features/group/group-list";
 import TaskList from "@features/task/task-list";
 import "./dashboard.css";
 import useDashboard from "./use-dashboard";
+import GroupForm from '@features/group/group-form';
 
 const Dashboard: FC = () => {
   const { adminGroups, userGroups, authorTasks, userTasks } = useDashboard();
 
   return (
     <div className="group-task-top-box">
+      <GroupForm />
       edit, delete group and list as component
       create group and task as component
       <div className="group-task-middle-box">

@@ -1,1 +1,1 @@
-export const a = "";
+export { default } from './group-form'

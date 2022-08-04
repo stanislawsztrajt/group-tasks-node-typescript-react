@@ -33,6 +33,12 @@ const TaskItem: FC<Props> = ({ task }) => {
   }, []);
   return (
     <Link to={`/groups/${groupId}/tasks/${_id}`}>
+      <div>
+        Edit
+      </div>
+      <div>
+        Delete
+      </div>
       <div className="mt-8 group-task-item">
         <div className="text-xs text-light">{String(createdAt)}</div>
         <div className="text-xl font-medium">{title}</div>
