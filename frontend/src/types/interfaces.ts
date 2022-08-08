@@ -23,17 +23,20 @@ export interface IloginValues {
   password: string;
 }
 
-export interface Itask {
-  _id: string;
+export interface ItaskData {
   title: string;
   description: string;
-  createdAt: Date | string;
   authorId: string;
   groupId?: string;
   solversIds?: string[];
   piority: "small" | "normal" | "high";
   type: "bug" | "update" | "creation";
   status: "pending" | "fulfilled" | "unfulfilled";
+}
+
+export interface Itask extends ItaskData {
+  _id: string;
+  createdAt: Date | string;
 }
 
 export interface IgroupData {

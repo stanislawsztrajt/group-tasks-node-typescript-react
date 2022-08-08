@@ -33,3 +33,9 @@ export const errorModal = () => Swal.fire(
   'Sorry for problems',
   'error'
 )
+
+export const successModal = () => Swal.fire(
+  'Success',
+  'nice',
+  'success'
+)
