@@ -3,7 +3,7 @@ import React, { ChangeEvent, FC } from 'react'
 import { Itask } from 'types/interfaces'
 // import UndrawNature from "src/images/undraw_nature.svg";
 import { Field, Form, Formik } from "formik";
-import useTasks from 'pages/task/use-task';
+import useTaskForm from './use-task-form';
 import SelectUserForm from '@features/group/group-form/select-user-form';
 
 interface Props {
@@ -20,7 +20,7 @@ const TaskForm: FC<Props> = ({ task }) => {
     users,
     taskSchema,
     initialValues
-  } = useTasks(task)
+  } = useTaskForm(task)
 
   const buttonText = task ? 'Update' : 'Create'
 
