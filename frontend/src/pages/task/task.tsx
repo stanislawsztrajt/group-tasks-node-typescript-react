@@ -1,10 +1,10 @@
 import React, { FC } from "react";
+
 import useTasks from "./use-task";
 
 const Task: FC = () => {
   const { task, solvers } = useTasks();
-  const { authorId, createdAt, description, piority, status, title, type } =
-    task;
+  const { authorId, createdAt, description, piority, status, title, type } = task;
 
   const solversList = solvers.map(({ name, email, _id }) => {
     return (

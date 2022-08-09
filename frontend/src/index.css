@@ -7,5 +7,5 @@ body {
 }
 
 .group-task-form-input {
-  @apply w-full lg:w-10/12 mt-3 text-lg font-medium duration-100 border-b-2 outline-none focus:border-b-indigo-600
+  @apply w-full lg:w-10/12 mt-3 text-lg font-medium duration-100 border-b-2 outline-none focus:border-b-indigo-600;
 }

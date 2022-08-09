@@ -1,28 +1,20 @@
-import React, { FC, useState } from "react";
-import GroupList from "@features/group/group-list";
-import TaskList from "@features/task/task-list";
-import GroupForm from "@features/group/group-form";
+import React, { FC } from "react";
+
 import "./dashboard.css";
 import useDashboard from "./use-dashboard";
 
+import { TaskList, TaskForm } from "@features/task";
+import { GroupForm, GroupList } from "@features/group";
+import { HandleModal } from "@features/ui";
+
 const Dashboard: FC = () => {
   const { adminGroups, userGroups, authorTasks, userTasks, isLoading } = useDashboard();
-  const [isCreateGroup, setIsCreateGroup] = useState<boolean>(false)
-
+  console.log(isLoading)
   return (
     <div className="group-task-top-box">
-      { isCreateGroup ?
-        <>
-          <div onClick={() => setIsCreateGroup(false)} className="fixed z-50 ml-48 bg-red-500 left-3/4">Close modal</div>
-          <GroupForm />
-        </>
-      : null }
-      <button onClick={() => setIsCreateGroup(true)}>
-        Create group
-      </button>
-      <button>
-        Create task in group
-      </button>
+      <HandleModal Modal={<GroupForm />} buttonText="Create Group" />
+      <HandleModal Modal={<TaskForm />} buttonText="Create Task in group" />
+
       <div className="group-task-middle-box">
         <GroupList groups={adminGroups} text="Groups where you are admin" />
         <GroupList groups={userGroups} text="Groups where you are user" />

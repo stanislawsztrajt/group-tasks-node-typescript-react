@@ -1,41 +1,28 @@
 import Swal from "sweetalert2";
-export const modalDelete = (request: () => Promise<'success' | 'error'>) => {
+export const modalDelete = (request: () => Promise<"success" | "error">) => {
   Swal.fire({
-    title: 'Are you sure?',
+    title: "Are you sure?",
     text: "You won't be able to revert this!",
-    icon: 'warning',
+    icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      const res = await request()
+      const res = await request();
 
-      if(res === 'success')
-        return Swal.fire(
-          'Deleted!',
-          'Has been deleted.',
-          'success'
-        )
-      
+      if (res === "success") return Swal.fire("Deleted!", "Has been deleted.", "success");
+
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
     }
-  })
-}
+  });
+};
 
-export const errorModal = () => Swal.fire(
-  'Problem with server?',
-  'Sorry for problems',
-  'error'
-)
+export const errorModal = () => Swal.fire("Problem with server?", "Sorry for problems", "error");
 
-export const successModal = () => Swal.fire(
-  'Success',
-  'nice',
-  'success'
-)
+export const successModal = () => Swal.fire("Success", "nice", "success");

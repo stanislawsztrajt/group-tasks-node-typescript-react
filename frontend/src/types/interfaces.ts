@@ -1,3 +1,5 @@
+import { TtaskPiority, TtaskStatus, TtaskType } from "types";
+
 export interface Iuser {
   _id: string;
   name: string;
@@ -29,9 +31,9 @@ export interface ItaskData {
   authorId: string;
   groupId?: string;
   solversIds?: string[];
-  piority: "small" | "normal" | "high";
-  type: "bug" | "update" | "creation";
-  status: "pending" | "fulfilled" | "unfulfilled";
+  piority: TtaskPiority;
+  type: TtaskType;
+  status: TtaskStatus;
 }
 
 export interface Itask extends ItaskData {

@@ -1,5 +1,7 @@
 import React, { FC } from "react";
+
 import useGroup from "./use-group";
+
 import TaskList from "@features/task/task-list";
 
 const Group: FC = () => {
@@ -17,8 +19,7 @@ const Group: FC = () => {
 
   return (
     <div>
-      edit, delete group and task as component
-      create task as component
+      edit, delete group and task as component create task as component
       <TaskList tasks={tasks} text="Tasks of group" />
       {usersList}
       {adminId}

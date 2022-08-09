@@ -44,10 +44,7 @@ const useSignUp = () => {
       const userWithoutRepeatedPassword = JSON.parse(JSON.stringify(user));
       delete userWithoutRepeatedPassword.repeatedPassword;
 
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/users`,
-        userWithoutRepeatedPassword
-      );
+      await axios.post(`${process.env.REACT_APP_API_URL}/users`, userWithoutRepeatedPassword);
       navigate("/auth/login");
     } catch (error) {
       setError("Name or email already exist");

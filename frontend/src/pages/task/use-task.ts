@@ -1,7 +1,8 @@
-import axios from "axios";
-import { authorization } from "constants/index";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+
+import { authorization } from "constants/index";
 import { Iresponse, Itask, Iuser } from "types/interfaces";
 
 const useTasks = () => {

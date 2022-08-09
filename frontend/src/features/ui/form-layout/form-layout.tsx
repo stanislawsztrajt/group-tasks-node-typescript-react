@@ -21,9 +21,7 @@ const FormLayou: FCC<Props> = ({ children }: Props) => {
                     <div className="px-4 py-6 text-white md:p-12 md:mx-6">
                       {/* <img src={UndrawBrainstorming} className="" alt="" /> */}
                       <div className="mt-4">
-                        <h4 className="mb-6 text-xl font-semibold px-28">
-                          Group tasks! login
-                        </h4>
+                        <h4 className="mb-6 text-xl font-semibold px-28">Group tasks! login</h4>
                       </div>
                     </div>
                   </div>

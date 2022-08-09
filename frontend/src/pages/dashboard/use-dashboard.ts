@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { authorization } from "constants/index";
+
 import axios from "axios";
+
+import { authorization } from "constants/index";
 import { Igroup, Iresponse, Itask } from "types/interfaces";
 
 const useDashboard = () => {
@@ -8,10 +10,10 @@ const useDashboard = () => {
   const [adminGroups, setAdminGroups] = useState<Igroup[]>([]);
   const [userTasks, setUserTasks] = useState<Itask[]>([]);
   const [authorTasks, setAuthorTasks] = useState<Itask[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     const fetchUserGroups = async () => {
       const { data }: Iresponse<Igroup[]> = await axios.get(
         `${process.env.REACT_APP_API_URL}/groups/user-groups`,
@@ -45,10 +47,9 @@ const useDashboard = () => {
         authorization
       );
       setAuthorTasks(data);
-      setIsLoading(false)
+      setIsLoading(false);
     };
     fetchAuthorTasks();
-
   }, []);
 
   return {
@@ -56,7 +57,7 @@ const useDashboard = () => {
     adminGroups,
     userTasks,
     authorTasks,
-    isLoading
+    isLoading,
   };
 };
 export default useDashboard;

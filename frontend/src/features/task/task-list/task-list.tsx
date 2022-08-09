@@ -1,5 +1,7 @@
 import React, { FC } from "react";
+
 import { Itask } from "types/interfaces";
+
 import TaskItem from "../task-item";
 
 interface Props {
@@ -12,9 +14,7 @@ const TaskList: FC<Props> = ({ tasks, text }) => {
 
   return (
     <div>
-      <div className="mt-10 text-3xl font-medium text-center text-indigo-600 uppercase">
-        {text}
-      </div>
+      <div className="mt-10 text-3xl font-medium text-center text-indigo-600 uppercase">{text}</div>
       {tasks.length < 1 ? (
         <div className="text-lg text-center">You dont have any task</div>
       ) : (
