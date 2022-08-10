@@ -70,6 +70,9 @@ const TaskForm: FC<Props> = ({ task }) => {
                 <Select onChange={(e) => {
                   values.status = e?.value as TtaskStatus
                 }} name="status" placeholder={initialValues.status} options={options.status}/>
+                <Select onChange={(e) => {
+                  values.groupId = e?.value as TtaskStatus
+                }} name="status" placeholder={"group"} options={options.status}/>
 
                 <SelectUserForm
                   setSearchUserValue={setSearchUserValue}

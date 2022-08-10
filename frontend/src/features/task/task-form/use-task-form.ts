@@ -9,6 +9,7 @@ import useSelectUserForm from "@features/user/select-user-form/use-select-user-f
 interface IinitialValues {
   title: string;
   description: string;
+  groupId: string;
   piority: "small" | "normal" | "high";
   type: "bug" | "update" | "creation";
   status: "pending" | "fulfilled" | "unfulfilled";
@@ -19,6 +20,7 @@ const taskSchema = Yup.object().shape({});
 const initialValues: IinitialValues = {
   title: "",
   description: "",
+  groupId: "",
   piority: "normal",
   type: "creation",
   status: "pending",
