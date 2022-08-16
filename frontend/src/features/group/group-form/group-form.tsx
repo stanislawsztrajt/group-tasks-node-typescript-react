@@ -27,17 +27,9 @@ const GroupForm: FC<Props> = ({ group }) => {
 
   return (
     <ModalLayout>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={groupSchema}
-        onSubmit={formAction}
-      >
-        {({errors, touched}) => (
+      <Formik initialValues={initialValues} validationSchema={groupSchema} onSubmit={formAction}>
+        {() => (
           <Form className="flex flex-col items-center">
-            {errors.description}
-            {errors.name}
-            {touched.description}
-            {touched.name}
             <h1 className="text-2xl font-bold text-center">{buttonText} Group</h1>
             <div className="mt-8"></div>
 
@@ -48,7 +40,7 @@ const GroupForm: FC<Props> = ({ group }) => {
               placeholder="Description"
               name="description"
             ></Field>
-
+            <div className='mt-4'></div>
             <SelectUserForm
               setSearchUserValue={setSearchUserValue}
               addUser={addUser}
@@ -56,7 +48,6 @@ const GroupForm: FC<Props> = ({ group }) => {
               users={users}
               selectedUsers={selectedUsers}
             />
-            <input type="submit" value={'update group'} />
             <button
               type="submit"
               className="px-8 py-2 mt-6 text-lg font-medium text-white bg-indigo-600 rounded-full"

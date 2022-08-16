@@ -9,7 +9,6 @@ import useSelectUserForm from "@features/user/select-user-form/use-select-user-f
 interface IinitialValues {
   title: string;
   description: string;
-  groupId: string;
   piority: "small" | "normal" | "high";
   type: "bug" | "update" | "creation";
   status: "pending" | "fulfilled" | "unfulfilled";
@@ -20,18 +19,17 @@ const taskSchema = Yup.object().shape({});
 const initialValues: IinitialValues = {
   title: "",
   description: "",
-  groupId: "",
   piority: "normal",
   type: "creation",
   status: "pending",
 };
 
-const useTaskForm = (task?: Itask) => {
-  initialValues.title = task?.title ?? ''
-  initialValues.description = task?.description ?? ''
-  initialValues.piority = task?.piority ?? 'normal'
-  initialValues.type = task?.type ?? 'creation'
-  initialValues.status = task?.status ?? 'pending'
+const useTaskForm = (groupId: string, task?: Itask) => {
+  initialValues.title = task?.title ?? "";
+  initialValues.description = task?.description ?? "";
+  initialValues.piority = task?.piority ?? "normal";
+  initialValues.type = task?.type ?? "creation";
+  initialValues.status = task?.status ?? "pending";
 
   const { setSearchUserValue, addUser, removeUser, selectedUsers, users } = useSelectUserForm(
     task,
@@ -42,10 +40,11 @@ const useTaskForm = (task?: Itask) => {
     const selectedUsersIds = selectedUsers.map(({ _id }) => _id);
     const bodyData: ItaskData = {
       ...values,
+      groupId,
       solversIds: selectedUsersIds,
       authorId: user._id,
     };
-    console.log(bodyData)
+    console.log(bodyData);
 
     try {
       if (task) {
@@ -63,7 +62,6 @@ const useTaskForm = (task?: Itask) => {
     } catch {
       errorModal();
     }
-
   };
 
   return {

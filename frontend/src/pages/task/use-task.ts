@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import { authorization } from "constants/index";
-import { Iresponse, Itask, Iuser } from "types/interfaces";
+import { Igroup, Iresponse, Itask, Iuser } from "types/interfaces";
+import { TresponseStatus } from "types";
 
 const useTasks = () => {
   const { taskId } = useParams();
@@ -11,6 +12,7 @@ const useTasks = () => {
     authorId: "",
     createdAt: new Date(),
     description: "",
+    groupId: "",
     piority: "normal",
     status: "pending",
     title: "",
@@ -19,6 +21,8 @@ const useTasks = () => {
     _id: "",
   });
   const [solvers, setSolvers] = useState<Iuser[]>([]);
+  const [author, setAuthor] = useState<Iuser>();
+  const [adminId, setAdminId] = useState<string>('');
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -38,11 +42,36 @@ const useTasks = () => {
       setSolvers(data);
     };
     fetchTaskSolvers();
+
+    const fetchAuthorTask = async () => {
+      const { data }: Iresponse<Iuser> = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${task.authorId}`,
+        authorization
+      );
+      setAuthor(data);
+    };
+    fetchAuthorTask();
+
+    const fetchAdminId = async () => {
+      const { data }: Iresponse<Igroup> = await axios.get(
+        `${process.env.REACT_APP_API_URL}/groups/${task.groupId}`,
+        authorization
+      );
+      setAdminId(data.adminId)
+    };
+    fetchAdminId();
   }, []);
+
+  const deleteTask: TresponseStatus = async () => {
+    return 'error'
+  }
 
   return {
     task,
     solvers,
+    author,
+    deleteTask,
+    adminId
   };
 };
 export default useTasks;

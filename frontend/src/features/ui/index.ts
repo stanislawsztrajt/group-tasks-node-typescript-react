@@ -1,6 +1,10 @@
-import FormLayout from "./form-layout";
-import ModalLayout from "./modal-layout";
-import Loading from "./loading";
-import HandleModal from './handle-modal';
+import DeleteButton from './delete-button'
+import Footer from './footer'
+import FormLayout from './form-layout'
+import HandleModal from './handle-modal'
+import Header from './header'
+import Loading from './loading'
+import ModalLayout from './modal-layout'
 
-export { FormLayout, Loading, ModalLayout, HandleModal };
+export { DeleteButton, Footer, FormLayout, HandleModal, Header, Loading, ModalLayout }
+    

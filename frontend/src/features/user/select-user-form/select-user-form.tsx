@@ -9,10 +9,16 @@ interface Props {
   selectedUsers: Iuser[];
   addUser: (user: Iuser) => void;
   removeUser: (_id: string) => void;
-  setSearchUserValue: React.Dispatch<React.SetStateAction<string>>
+  setSearchUserValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SelectUserForm: FC<Props> = ({ users, selectedUsers, addUser, removeUser, setSearchUserValue }) => {
+const SelectUserForm: FC<Props> = ({
+  users,
+  selectedUsers,
+  addUser,
+  removeUser,
+  setSearchUserValue,
+}) => {
   const usersList = users.map((user) => {
     return (
       <div
@@ -44,7 +50,7 @@ const SelectUserForm: FC<Props> = ({ users, selectedUsers, addUser, removeUser, 
         type="text"
         placeholder="Find users"
         name="search"
-        className="mt-4 task-task-form-input"
+        className="group-task-form-input "
       />
       <h2 className="mt-2 text-xl">Select users</h2>
       <div className="w-3/4 h-48 overflow-scroll lg:w-1/2 max-h-48">{usersList}</div>

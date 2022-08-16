@@ -3,6 +3,7 @@ import { IloginValues, Iuser } from "types/interfaces";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { checkIsLogin } from "helpers/index";
 
 interface IloginResponse {
   data: {
@@ -30,6 +31,7 @@ const initialValues: IloginValues = {
 };
 
 const useLogin = () => {
+  checkIsLogin()
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);

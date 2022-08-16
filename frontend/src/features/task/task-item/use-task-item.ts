@@ -6,7 +6,6 @@ import { authorization, user } from "constants/index";
 
 const useTaskItem = (task: Itask) => {
   const { authorId, _id } = task;
-  console.log(_id)
   const [author, setAuthor] = useState<Iuser>();
 
   useEffect(() => {
@@ -27,11 +26,10 @@ const useTaskItem = (task: Itask) => {
     }
   };
 
-
   return {
     author,
-    deleteTask
-  }
-}
+    deleteTask,
+  };
+};
 
 export default useTaskItem;

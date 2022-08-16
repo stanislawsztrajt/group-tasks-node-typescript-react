@@ -16,6 +16,7 @@ const useGroup = () => {
   });
   const [tasks, setTasks] = useState<Itask[]>([]);
   const [users, setUsers] = useState<Iuser[]>([]);
+  const [admin, setAdmin] = useState<Iuser>({ name: '', email: '', _id: '' });
 
   useEffect(() => {
     const fetchGroup = async () => {
@@ -44,12 +45,22 @@ const useGroup = () => {
       setUsers(data);
     };
     fetchUsers();
+
+    const fetchAdmin = async () => {
+      const { data }: Iresponse<Iuser> = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${group.adminId}`,
+        authorization
+      );
+      setAdmin(data);
+    }
+    fetchAdmin()
   }, []);
 
   return {
     group,
     tasks,
     users,
+    admin
   };
 };
 export default useGroup;

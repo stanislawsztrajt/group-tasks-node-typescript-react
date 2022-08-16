@@ -13,14 +13,16 @@ const GroupList: FC<Props> = ({ groups, text }) => {
   const groupsList = groups.map((group) => <GroupItem key={group._id} group={group} />);
 
   return (
-    <div>
-      <div className="mt-10 text-3xl font-medium text-center text-indigo-600 uppercase">{text}</div>
+    <>
+      <div className="p-4 mt-10 text-3xl font-medium text-center text-indigo-800 uppercase bg-white rounded-lg shadow-lg">
+        {text}
+      </div>
       {groups.length < 1 ? (
         <div className="text-lg text-center">You dont have any groups</div>
       ) : (
-        groupsList
+        <div className="flex flex-col items-center">{groupsList}</div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -4,8 +4,11 @@ import axios from "axios";
 
 import { authorization } from "constants/index";
 import { Igroup, Iresponse, Itask } from "types/interfaces";
+import { checkIsNotLogin } from "helpers";
 
 const useDashboard = () => {
+  checkIsNotLogin()
+
   const [userGroups, setUserGroups] = useState<Igroup[]>([]);
   const [adminGroups, setAdminGroups] = useState<Igroup[]>([]);
   const [userTasks, setUserTasks] = useState<Itask[]>([]);

@@ -44,7 +44,7 @@ const useGroupForm = (group?: Igroup) => {
       usersIds: selectedUsersIds,
       adminId: user._id,
     };
-    console.log(bodyData)
+    console.log(bodyData);
     try {
       if (group) {
         await axios.put(

@@ -3,12 +3,13 @@ import axios from "axios";
 
 import { authorization, user } from "constants/index";
 import { Igroup, Iuser } from "types/interfaces";
+import { TresponseStatus } from "types";
 
 const useGroupItem = (group: Igroup) => {
   const [admin, setAdmin] = useState<Iuser>();
   const { _id, adminId } = group;
 
-  const deleteGroup: () => Promise<"success" | "error"> = async () => {
+  const deleteGroup: TresponseStatus = async () => {
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/groups/${_id}`, authorization);
       return "success";

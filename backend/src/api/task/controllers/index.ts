@@ -89,7 +89,7 @@ export const update = async (req: TypedRequest<Itask>, res: Response) => {
 export const remove = async (req: TypedRequest<Itask>, res: Response) => {
   try {
     const _id = req.params.id;
-    const entity = (await Entity.findByIdAndDelete(_id)) as Itask;
+    const entity = await Entity.findByIdAndDelete(_id) as Itask;
     res.status(200).json(entity);
   } catch (err) {
     sendDefaultError(err, res);

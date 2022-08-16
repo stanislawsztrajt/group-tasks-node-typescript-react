@@ -4,6 +4,9 @@ export interface Iuser {
   _id: string;
   name: string;
   email: string;
+}
+
+export interface IuserLogin extends Iuser {
   password: string;
 }
 
@@ -29,7 +32,7 @@ export interface ItaskData {
   title: string;
   description: string;
   authorId: string;
-  groupId?: string;
+  groupId: string;
   solversIds?: string[];
   piority: TtaskPiority;
   type: TtaskType;
