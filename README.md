@@ -38,6 +38,9 @@ Here we see the groups in which we are admins and users, delete group, edit grou
 > edit task
 ![Screenshot_359](https://user-images.githubusercontent.com/64974010/192788713-bb7f1730-0fdf-48bf-92d8-dfccd4c47598.png)
 
+# Dashboard/tasks page
+![Screenshot_361](https://user-images.githubusercontent.com/64974010/192790285-e9cb8955-c17d-4520-a970-2030b03e60b9.png)
+
 # Single task page
 ![Screenshot_360](https://user-images.githubusercontent.com/64974010/192789986-56ff4f21-0b0a-4936-9210-c558e3e1e75b.png)
 
