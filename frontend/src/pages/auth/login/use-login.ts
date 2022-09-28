@@ -31,7 +31,7 @@ const initialValues: IloginValues = {
 };
 
 const useLogin = () => {
-  checkIsLogin()
+  checkIsLogin();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);

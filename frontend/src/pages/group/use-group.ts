@@ -16,7 +16,7 @@ const useGroup = () => {
   });
   const [tasks, setTasks] = useState<Itask[]>([]);
   const [users, setUsers] = useState<Iuser[]>([]);
-  const [admin, setAdmin] = useState<Iuser>({ name: '', email: '', _id: '' });
+  const [admin, setAdmin] = useState<Iuser>({ name: "", email: "", _id: "" });
 
   useEffect(() => {
     const fetchGroup = async () => {
@@ -52,15 +52,15 @@ const useGroup = () => {
         authorization
       );
       setAdmin(data);
-    }
-    fetchAdmin()
+    };
+    fetchAdmin();
   }, []);
 
   return {
     group,
     tasks,
     users,
-    admin
+    admin,
   };
 };
 export default useGroup;

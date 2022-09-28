@@ -1,6 +1,5 @@
 const useDeleteButton = () => {
-  return {}
-}
+  return {};
+};
 
-export default useDeleteButton
-  
+export default useDeleteButton;

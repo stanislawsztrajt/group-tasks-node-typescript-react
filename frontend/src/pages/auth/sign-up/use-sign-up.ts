@@ -3,7 +3,7 @@ import { IsignUpValues } from "types/interfaces";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { checkIsLogin } from 'helpers/index';
+import { checkIsLogin } from "helpers/index";
 
 const initialValues: IsignUpValues = {
   name: "",
@@ -34,7 +34,7 @@ const signUpSchema = Yup.object().shape({
 });
 
 const useSignUp = () => {
-  checkIsLogin()
+  checkIsLogin();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);

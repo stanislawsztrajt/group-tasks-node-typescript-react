@@ -22,7 +22,7 @@ const useTasks = () => {
   });
   const [solvers, setSolvers] = useState<Iuser[]>([]);
   const [author, setAuthor] = useState<Iuser>();
-  const [adminId, setAdminId] = useState<string>('');
+  const [adminId, setAdminId] = useState<string>("");
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -57,21 +57,21 @@ const useTasks = () => {
         `${process.env.REACT_APP_API_URL}/groups/${task.groupId}`,
         authorization
       );
-      setAdminId(data.adminId)
+      setAdminId(data.adminId);
     };
     fetchAdminId();
   }, []);
 
   const deleteTask: TresponseStatus = async () => {
-    return 'error'
-  }
+    return "error";
+  };
 
   return {
     task,
     solvers,
     author,
     deleteTask,
-    adminId
+    adminId,
   };
 };
 export default useTasks;

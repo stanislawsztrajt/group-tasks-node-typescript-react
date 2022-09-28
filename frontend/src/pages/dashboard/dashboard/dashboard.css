@@ -1,9 +1,9 @@
 .group-task-top-box {
-  @apply flex flex-col justify-center w-full xl:w-auto xl:flex-row;
+  @apply flex flex-col w-full -mt-16 lg:-mt-0 xl:w-auto xl:flex-row;
 }
 
 .group-task-middle-box {
-  @apply flex flex-col w-full px-20 xl:w-1/2;
+  @apply flex flex-col w-full px-8 lg:px-20 xl:w-1/2;
 }
 
 .group-task-item {

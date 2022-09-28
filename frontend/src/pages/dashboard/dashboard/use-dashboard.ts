@@ -5,9 +5,11 @@ import axios from "axios";
 import { authorization } from "constants/index";
 import { Igroup, Iresponse, Itask } from "types/interfaces";
 import { checkIsNotLogin } from "helpers";
+import { useNavigate } from "react-router-dom";
 
 const useDashboard = () => {
-  checkIsNotLogin()
+  checkIsNotLogin();
+  const navigation = useNavigate()
 
   const [userGroups, setUserGroups] = useState<Igroup[]>([]);
   const [adminGroups, setAdminGroups] = useState<Igroup[]>([]);
@@ -55,12 +57,19 @@ const useDashboard = () => {
     fetchAuthorTasks();
   }, []);
 
+  const logout = () => {
+    localStorage.clear()
+    navigation('/')
+    window.location.reload()
+  }
+
   return {
     userGroups,
     adminGroups,
     userTasks,
     authorTasks,
     isLoading,
+    logout
   };
 };
 export default useDashboard;

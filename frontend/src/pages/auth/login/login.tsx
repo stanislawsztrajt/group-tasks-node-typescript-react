@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
-// import UndrawNature from "src/images/undraw_nature.svg";
 
 import useLogin from "./use-login";
 
@@ -14,9 +13,7 @@ const Login: FC = () => {
     <>
       <Link to={"/"}>
         <div className="text-center">
-          {/* <img className="mx-auto w-36" src={UndrawNature} alt="logo" /> */}
-
-          <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold">Chill and think</h4>
+          <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold uppercase">GROUPSTASKS</h4>
         </div>
       </Link>
       {loading ? (
@@ -32,7 +29,7 @@ const Login: FC = () => {
               <Field
                 type="email"
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
               />
             </div>
@@ -41,7 +38,7 @@ const Login: FC = () => {
                 type="password"
                 name="password"
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                placeholder="password"
+                placeholder="Password"
               />
             </div>
             <div className="pt-1 pb-1 mb-12 text-center">
@@ -53,9 +50,6 @@ const Login: FC = () => {
               >
                 Log in
               </button>
-              <Link className="text-gray-500" to={"/login"}>
-                Forgot password?
-              </Link>
               <Link
                 to={"/auth/sign-up"}
                 className="inline-block px-6 py-2.5 text-blue-500 hover:opacity-90 text-sm transition duration-150 ease-in-out w-full mb-3"

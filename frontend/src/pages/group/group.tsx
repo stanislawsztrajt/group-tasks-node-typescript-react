@@ -10,18 +10,13 @@ import { HandleModal, DeleteButton } from "@features/ui";
 import { faCirclePlus, faPenToSquare, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 const Group: FC = () => {
   const { group, tasks, users, admin } = useGroup();
-  const { deleteGroup } = useGroupItem(group)
+  const { deleteGroup } = useGroupItem(group);
   const { adminId, createdAt, description, name } = group;
 
   const usersList = users.map(({ name, _id }) => {
-    return (
-      <div key={_id}>
-        {name}
-      </div>
-    );
+    return <div key={_id}>{name}</div>;
   });
 
   return (
@@ -30,8 +25,8 @@ const Group: FC = () => {
         {name}
       </div>
 
-      <div className='flex flex-row justify-center mt-2'>
-        { user._id === adminId ? 
+      <div className="flex flex-row justify-center mt-2">
+        {user._id === adminId ? (
           <>
             <DeleteButton deleteMethod={deleteGroup} />
             <HandleModal
@@ -40,8 +35,8 @@ const Group: FC = () => {
               buttonText="edit"
               icon={faPenToSquare}
             />
-        </>
-        : null}
+          </>
+        ) : null}
         <HandleModal
           className="text-white duration-100 bg-green-600 hover:bg-green-700"
           Modal={<TaskForm groupId={group._id} />}
@@ -49,31 +44,21 @@ const Group: FC = () => {
           icon={faCirclePlus}
         />
       </div>
-      <div className='group-task-top-box'>
-        <div className='mt-24 group-task-middle-box'>
+      <div className="group-task-top-box">
+        <div className="mt-24 group-task-middle-box">
           <TaskList tasks={tasks} text="Tasks of group" />
         </div>
-        <div className='mt-24 group-task-middle-box'>
-          <div className='p-4 mt-10 bg-white rounded-lg shadow-lg'>
-            <div className='text-xl font-bold'>
-              Admin is {admin.name}
-            </div>
-            <div className='text-2xl'>
-              {name}
-            </div>
-            <div className='text-sm font-thin'>
-              {String(createdAt)}
-            </div>
-            <p>
-              {description}
-            </p>
-            <div className='mt-4'>
-              <div className='text-xl'>
+        <div className="mt-24 group-task-middle-box">
+          <div className="p-4 mt-10 bg-white rounded-lg shadow-lg">
+            <div className="text-xl font-bold">Admin is {admin.name}</div>
+            <div className="text-2xl">{name}</div>
+            <div className="text-sm font-thin">{String(createdAt)}</div>
+            <p>{description}</p>
+            <div className="mt-4">
+              <div className="text-xl">
                 <FontAwesomeIcon icon={faUsers} /> USERS
               </div>
-              <div className='ml-4 text-base'>
-                {usersList}
-              </div>
+              <div className="ml-4 text-base">{usersList}</div>
             </div>
           </div>
         </div>

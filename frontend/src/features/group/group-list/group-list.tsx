@@ -14,11 +14,11 @@ const GroupList: FC<Props> = ({ groups, text }) => {
 
   return (
     <>
-      <div className="p-4 mt-10 text-3xl font-medium text-center text-indigo-800 uppercase bg-white rounded-lg shadow-lg">
+      <div className="p-10 mt-10 text-3xl font-medium text-center bg-white rounded-lg shadow">
         {text}
       </div>
       {groups.length < 1 ? (
-        <div className="text-lg text-center">You dont have any groups</div>
+        <div className="mt-3 text-2xl text-center">You don&apos;t have any groups</div>
       ) : (
         <div className="flex flex-col items-center">{groupsList}</div>
       )}

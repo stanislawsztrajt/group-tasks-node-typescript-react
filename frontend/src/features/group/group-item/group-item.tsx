@@ -22,12 +22,12 @@ const GroupList: FC<Props> = ({ group }) => {
     <div className="flex flex-col items-center justify-center w-full mt-10">
       <div className="group-task-item">
         <Link to={`/groups/${_id}`}>
-            <div className="text-xs font-light ">{String(createdAt)}</div>
-            <div className="text-xl font-medium">{name}</div>
-            <div className="text-base">{description}</div>
-            <div className="text-sm font-bold">
-              {adminId === user._id ? <>You are admin</> : <>{admin?.name} is admin</>}
-            </div>
+          <div className="text-xs font-light ">{String(createdAt)}</div>
+          <div className="text-xl font-medium">{name}</div>
+          <div className="text-base">{description}</div>
+          <div className="text-sm font-bold">
+            {adminId === user._id ? <>You are admin</> : <>{admin?.name} is admin</>}
+          </div>
         </Link>
       </div>
       {user._id === adminId ? (

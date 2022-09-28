@@ -1,22 +1,17 @@
 import React, { FC } from "react";
-// import UndrawNature from "src/images/undraw_nature.svg";
 import { Field, Form, Formik } from "formik";
 import useSignUp from "./use-sign-up";
 import { Loading } from "features/ui";
-// import { checkIsUserLoggedIn } from "src/helpers";
 import { Link } from "react-router-dom";
 
 const SignUp: FC = () => {
-  // checkIsUserLoggedIn();
   const { initialValues, signUpSchema, signUp, error, loading } = useSignUp();
 
   return (
     <>
       <Link to={"/"}>
         <div className="text-center">
-          {/* <img className="mx-auto w-36" src={UndrawNature} alt="logo" /> */}
-
-          <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold">Chill and think</h4>
+          <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold">GROUPSTASKS</h4>
         </div>
       </Link>
 
@@ -86,7 +81,7 @@ const SignUp: FC = () => {
                   </button>
 
                   <Link
-                    to={"/login"}
+                    to={"/auth/login"}
                     className="inline-block px-6 py-2.5 text-blue-500 hover:opacity-90 text-sm transition duration-150 ease-in-out w-full mb-3"
                   >
                     Have an account? Login

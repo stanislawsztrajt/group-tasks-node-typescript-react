@@ -1,4 +1,4 @@
-import { faXmarkSquare, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faXmarkSquare, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ReactNode, useState } from "react";
 import type { FCC } from "types/index";
@@ -17,11 +17,8 @@ const HandleModal: FCC<Props> = ({ Modal, buttonText, className, icon }: Props) 
     <>
       {isModalOpen ? (
         <>
-          <div
-            onClick={() => setIsModalOpen(false)}
-            className="fixed top-0 left-0 z-50 mt-8 ml-8"
-          >
-            <FontAwesomeIcon className='w-16 h-16' icon={faXmarkSquare} />
+          <div onClick={() => setIsModalOpen(false)} className="fixed top-0 left-0 z-50">
+            <FontAwesomeIcon className="w-16 h-16" icon={faXmark} />
           </div>
           {Modal}
         </>
@@ -31,9 +28,7 @@ const HandleModal: FCC<Props> = ({ Modal, buttonText, className, icon }: Props) 
         onClick={() => setIsModalOpen(true)}
       >
         <FontAwesomeIcon icon={icon as IconDefinition} />
-        <span className='ml-2'>
-          {buttonText}
-        </span>
+        <span className="ml-2">{buttonText}</span>
       </button>
     </>
   );

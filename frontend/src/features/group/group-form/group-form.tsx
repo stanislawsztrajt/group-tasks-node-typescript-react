@@ -40,7 +40,7 @@ const GroupForm: FC<Props> = ({ group }) => {
               placeholder="Description"
               name="description"
             ></Field>
-            <div className='mt-4'></div>
+            <div className="mt-4"></div>
             <SelectUserForm
               setSearchUserValue={setSearchUserValue}
               addUser={addUser}

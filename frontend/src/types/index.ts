@@ -7,4 +7,4 @@ export type TtaskPiority = "small" | "normal" | "high";
 export type TtaskType = "bug" | "update" | "creation";
 export type TtaskStatus = "pending" | "fulfilled" | "unfulfilled";
 
-export type TresponseStatus = () => Promise<"success" | "error">
+export type TresponseStatus = () => Promise<"success" | "error">;

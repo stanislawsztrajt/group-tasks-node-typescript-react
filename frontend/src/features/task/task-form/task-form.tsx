@@ -54,7 +54,12 @@ const TaskForm: FC<Props> = ({ task, groupId }) => {
             <Form className="flex flex-col items-center">
               <h1 className="text-2xl font-bold text-center">{buttonText} Task</h1>
               <div className="mt-8"></div>
-              <Field type="text" placeholder="Name" name="title" className="group-task-form-input" />
+              <Field
+                type="text"
+                placeholder="Name"
+                name="title"
+                className="group-task-form-input"
+              />
               <Field
                 as="textarea"
                 className="h-40 max-h-48 group-task-form-input"
@@ -88,7 +93,7 @@ const TaskForm: FC<Props> = ({ task, groupId }) => {
                 placeholder={initialValues.status}
                 options={options.status}
               />
-              <div className='mt-8'></div>
+              <div className="mt-8"></div>
               <SelectUserForm
                 setSearchUserValue={setSearchUserValue}
                 addUser={addUser}
